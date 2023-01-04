@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sales>
+  <chart>
+    <points>
+      <country>United States</country>
+      <value>100</value>
+    </points>
+    <points>
+      <country>Germany</country>
+      <value>120</value>
+    </points>
+    <points>
+      <country>United Kingdom</country>
+      <value>80</value>
+    </points>
+    <points>
+      <country>India</country>
+      <value>40</value>
+    </points>
+    <points>
+      <country>China</country>
+      <value>300</value>
+    </points>
+    <points>
+      <country>Korea</country>
+      <value>800</value>
+    </points>
+    <points>
+      <country>Japan</country>
+      <value>140</value>
+    </points>
+  </chart>
+</sales>

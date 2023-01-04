@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="about.css"?>
+<!DOCTYPE chap SYSTEM "about.dtd"[]>
+<chap>
+  <chap_hl>This Shortcuts Sample</chap_hl>
+  <chap_desc>Using shortcuts is a useful way to access word processing functions by using key combinations. Some shortcuts (like <filename>Ctrl+Z</filename> for undo, <filename>Ctrl+Y</filename> for redo,<filename>Ctrl+C</filename> for copy, <filename>Ctrl+X</filename> for cut and <filename>Ctrl+V</filename> for paste) are built-in. This sample shows how to implement a user defined shortcut behavior by using the <apiname>TextControl.KeyDown</apiname> event.</chap_desc>
+  <chap_desc />
+  <article>
+    <ref_hl>Using this Sample</ref_hl>
+    <ref_desc>This sample implements the following shortcuts:</ref_desc>
+    <list>
+      <list_desc>
+        <filename>Insert</filename>: Toggles the <apiname>TextControl</apiname><link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.insertionmode.property.htm">insertion mode</link> between <apiname>Insert</apiname> and <apiname>Overwrite</apiname>.</list_desc>
+      <list_desc>
+        <filename>Ctrl+A</filename>: <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.selectall.method.htm">Selects all text</link> in the <apiname>TextControl</apiname>.</list_desc>
+      <list_desc>
+        <filename>Ctrl+S</filename>: <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.save.method.htm">Save</link> the changes of active document.</list_desc>
+      <list_desc>
+        <filename>Ctrl+O</filename>: Invokes the built-in <apiname>TextControl</apiname><link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.load.method.htm">load</link> dialog to open a document.</list_desc>
+      <list_desc>
+        <filename>Ctrl+F</filename>: Invokes the built-in <apiname>TextControl</apiname><link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.find.method.htm">find</link> dialog.</list_desc>
+      <list_desc>
+        <filename>Ctrl+P</filename>: Invokes the built-in <apiname>TextControl</apiname><link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.print.method.htm">print</link> dialog.</list_desc>
+    </list>
+    <ref_desc>To check the implementation add or load some text and apply the defined shortcuts.</ref_desc>
+    <ref_desc />
+  </article>
+  <article>
+    <ref_hl>The Code Behind</ref_hl>
+    <ref_desc>As mentioned before, the shortcuts are handled by a <apiname>TextControl.KeyDown</apiname> event handler:</ref_desc>
+    <cs_code>
+      <code_line>private void TextControl_KeyDown(object sender, KeyEventArgs e) {</code_line>
+      <code_line>        switch (e.KeyCode) {</code_line>
+      <code_line>                case Keys.Insert:   // Toggle insertion mode					</code_line>
+      <code_line>                        if (e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        ToggleInsertionMode();</code_line>
+      <code_line>                        break;</code_line>
+      <code_line />
+      <code_line>                case Keys.A:        // Ctrl + A: Select all</code_line>
+      <code_line>                        if (!e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        m_txTextControl.SelectAll();</code_line>
+      <code_line>                        break;</code_line>
+      <code_line />
+      <code_line>                case Keys.S:        // Ctrl + S: Save</code_line>
+      <code_line>                        if (!e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        Save(m_strActiveDocumentPath);</code_line>
+      <code_line>                        break;</code_line>
+      <code_line />
+      <code_line>                case Keys.O:        // Ctrl + O: Open</code_line>
+      <code_line>                        if (!e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        Open();</code_line>
+      <code_line>                        break;</code_line>
+      <code_line />
+      <code_line>                case Keys.F:        // Ctrl + F: Search</code_line>
+      <code_line>                        if (!e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        m_txTextControl.Find();</code_line>
+      <code_line>                        break;</code_line>
+      <code_line />
+      <code_line>                case Keys.P:        // Ctrl + P: Print</code_line>
+      <code_line>                        if (!e.Control || e.Alt || e.Shift) { break; }</code_line>
+      <code_line>                        if (m_txTextControl.CanPrint) {</code_line>
+      <code_line>                                m_txTextControl.Print(m_strActiveDocumentName);</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                        break;</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+  </article>
+  <article>
+    <ref_hl>Support</ref_hl>
+    <ref_desc>The <apiname>Text Control Support</apiname> section offers links to all technical resources related to <apiname>Text Control</apiname>, including documentation, getting started guides, FAQs and links to interesting blog articles.</ref_desc>
+    <ref_desc>Contact us:</ref_desc>
+    <ref_desc>
+      <link href="https://www.textcontrol.com/support/overview/">https://www.textcontrol.com/support/overview/</link>
+    </ref_desc>
+  </article>
+</chap>

@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="about.css"?>
+<!DOCTYPE chap SYSTEM "about.dtd"[]>
+<chap>
+  <chap_hl>This Ribbon Sample</chap_hl>
+  <chap_desc>This sample shows how to combine all components provided by <apiname>TX Text Control</apiname> to create a ribbon application.</chap_desc>
+  <chap_desc>Furthermore, it implements code that gives the items of the application menu the behavior to reset the content, open a document, save and print it, determine its settings and exit the application. It also implements a file management and provides a list of recent files. </chap_desc>
+  <chap_desc>Besides the implementation of an application menu, the sample manages the layout of the quick access toolbar, sidebars, ruler and status bars, the contextual tabs management and updating the custom button images when changing the resolution.</chap_desc>
+  <chap_desc />
+  <article>
+    <ref_hl>Creating this Sample</ref_hl>
+    <ref_desc>When creating the sample with the <apiname>Visual Studio</apiname> designer, after adding a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.class.htm">TextControl</link> to the form, the following controls were additionally added to the form by using the <apiname>TextControl</apiname> smart tag:</ref_desc>
+    <list>
+      <list_desc>a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbon.class.htm">ribbon</link></list_desc>
+      <list_desc>a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.statusbar.class.htm">status bar</link></list_desc>
+      <list_desc>a horizontal <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.rulerbar.class.htm">ruler</link></list_desc>
+      <list_desc>a vertical ruler</list_desc>
+      <list_desc>a bottom <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.content.property.htm">sidebar</link></list_desc>
+      <list_desc>a left sidebar</list_desc>
+      <list_desc>a right sidebar</list_desc>
+    </list>
+    <ref_desc>All of these controls were arranged by clicking the <apiname>Arrange Controls Automatically</apiname> smart tag item.</ref_desc>
+    <ref_desc>The following predefined ribbon tabs were added to the ribbon by using the smart tag:</ref_desc>
+    <list>
+      <list_desc>a <apiname>Home</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.class.htm">RibbonFormattingTab</link>)</list_desc>
+      <list_desc>an <apiname>Insert</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribboninserttab.class.htm">RibbonInsertTab</link>)</list_desc>
+      <list_desc>a <apiname>Page</apiname> Layout tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonpagelayouttab.class.htm">RibbonPageLayoutTab</link> )</list_desc>
+      <list_desc>a <apiname>View</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonviewtab.class.htm">RibbonViewTab</link>)</list_desc>
+      <list_desc>a <apiname>References</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonreferencestab.class.htm">RibbonReferencesTab</link>)</list_desc>
+      <list_desc>a <apiname>Proofing</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonproofingtab.class.htm">RibbonProofingTab</link>)</list_desc>
+      <list_desc>a <apiname>Permissions</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonpermissionstab.class.htm">RibbonPermissionsTab</link>)</list_desc>
+      <list_desc>a <apiname>Form Fields</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformfieldstab.class.htm">RibbonFormFieldsTab</link>)</list_desc>
+      <list_desc>a <apiname>Reporting</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonreportingtab.class.htm">RibbonReportingTab</link>)</list_desc>
+    </list>
+    <ref_desc />
+    <ref_desc>The <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonbutton.class.htm">buttons</link> of the application menu were implemented by opening the <apiname>Control Collection Editor</apiname> when clicking the corresponding button of the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbon.applicationmenuitems.property.htm">ApplicationMenuItems</link> property inside the <apiname>Properties</apiname> window for the ribbon control.</ref_desc>
+    <ref_desc>By clicking the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbon.contextualtabgroups.property.htm">Ribbon.ContextualTabGroups</link> property button, a <apiname>Control Collection Editor</apiname> is opened in order to create two objects of type <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.contextualtabgroup.class.htm">ContextualTabGroup</link> . To the first one, a <apiname>Table Layout</apiname> (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbontablelayouttab.class.htm">RibbonTableLayoutTab</link>) and a <apiname>Formulas</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformulatab.class.htm">RibbonFormulaTab</link>) are added by editing the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.contextualtabgroup.contextualtabs.property.htm">ContextualTabs</link> property via the <apiname>Properties</apiname> window. To the second one, a <apiname>Frame Formatting</apiname> (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonframelayouttab.class.htm">RibbonFrameLayoutTab</link>) and a <apiname>Chart Layout</apiname> tab (type of <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonchartlayouttab.class.htm">RibbonChartLayoutTab</link>) were added.</ref_desc>
+    <ref_desc>To show the <apiname>About</apiname> sidebar on starting the application, its <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.contentlayout.property.htm">ContentLayout</link> property is set to <apiname>About</apiname> by selecting the corresponding drop down item inside the left sidebar's smart tag. To prevent an unpinning of the sidebar, the smart tag's <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.showpinbutton.property.htm">ShowPinButton</link> check box is unchecked.</ref_desc>
+    <ref_desc>Both other sidebars are hidden when running the sample. This was implemented by unchecking the smart tag's <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.isshown.property.htm">IsShown</link> check box.</ref_desc>
+    <ref_desc>All sidebars were connected to predefined ribbon tabs to show a specific layout and perform the corresponding behavior when the related button is clicked. The connection can be set by the <apiname>Properties</apiname> window or the smart tag of the ribbon tab. For this sample, the predefined ribbon tabs are associated with the sidebars as follows:</ref_desc>
+    <ref_desc>The <apiname>Home</apiname> tab:</ref_desc>
+    <member_list>
+      <member_hl>
+        <member_name_hl>Property</member_name_hl>
+        <member_desc_hl>Sidebar</member_desc_hl>
+      </member_hl>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.findhorizontalsidebar.property.htm">FindHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.findsidebar.property.htm">FindSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.gotohorizontalsidebar.property.htm">GotoHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.gotosidebar.property.htm">GotoSidebar</link>
+        </member_name>
+        <member_desc>(none)</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.replacehorizontalsidebar.property.htm">ReplaceHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.replacesidebar.property.htm">ReplaceSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformattingtab.stylessidebar.property.htm">StylesSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+    </member_list>
+    <ref_desc />
+    <ref_desc>The <apiname>Proofing</apiname> tab:</ref_desc>
+    <member_list>
+      <member_hl>
+        <member_name_hl>Property</member_name_hl>
+        <member_desc_hl>Sidebar</member_desc_hl>
+      </member_hl>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonproofingtab.commentshorizontalsidebar.property.htm">CommentsHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonproofingtab.commentssidebar.property.htm">CommentsSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonproofingtab.trackedchangeshorizontalsidebar.property.htm">TrackedChangesHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonproofingtab.trackedchangessidebar.property.htm">TrackedChangesSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+    </member_list>
+    <ref_desc />
+    <ref_desc>The <apiname>Form Fields</apiname> tab:</ref_desc>
+    <member_list>
+      <member_hl>
+        <member_name_hl>Property</member_name_hl>
+        <member_desc_hl>Sidebar</member_desc_hl>
+      </member_hl>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformfieldstab.conditionalinstructionshorizontalsidebar.property.htm">ConditionalInstructionsHorizontalSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonformfieldstab.conditionalinstructionssidebar.property.htm">ConditionalInstructionsSidebar</link>
+        </member_name>
+        <member_desc>right</member_desc>
+      </member>
+    </member_list>
+    <ref_desc />
+    <ref_desc>The <apiname>Reporting</apiname> tab:</ref_desc>
+    <member_list>
+      <member_hl>
+        <member_name_hl>Property</member_name_hl>
+        <member_desc_hl>Sidebar</member_desc_hl>
+      </member_hl>
+      <member>
+        <member_name>
+          <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonreportingtab.fieldnavigatorsidebar.property.htm">FieldNavigatorSidebar</link>
+        </member_name>
+        <member_desc>bottom</member_desc>
+      </member>
+    </member_list>
+    <ref_desc />
+    <ref_desc>Finally, the <apiname>Form</apiname> of the application is converted to a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.ribbon.ribbonform.class.htm">RibbonForm</link> by clicking the <apiname>Ribbon</apiname> smart tag item <apiname>Convert To a RibbonForm</apiname>.</ref_desc>
+    <ref_desc />
+  </article>
+  <article>
+    <ref_hl>The Code Behind</ref_hl>
+    <ref_desc>For the application menu and quick access toolbar items, the sidebar and toolbars layout management, handling the contextual tabs and updating icons when changing the resolution, a file is created that implements the requested behavior as follows:</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_FileInfo.cs:</apiname>
+    </ref_desc>
+    <ref_desc>This file manages information about the currently loaded document. It provides methods to update the window caption and the enable state of the <apiname>Save</apiname> button when the content of the <apiname>TextControl</apiname> is changed by resetting it, typing, deleting or formatting text, loading a document or saving it.</ref_desc>
+    <cs_code>
+      <code_line>private void UpdateMainWindowCaption() {</code_line>
+      <code_line>        this.Text = m_strActiveDocumentName + (m_bIsDirtyDocument ? "*" : "") + " - " +     Properties.Resources.MainWindow_Caption_Product;</code_line>
+      <code_line>        this.Refresh();</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>private void UpdateSaveEnabledState() {</code_line>
+      <code_line>        m_rbtnSave.Enabled = m_bIsDirtyDocument &amp;&amp; !m_bIsUnknownDocument;</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_New.cs: </apiname>
+    </ref_desc>
+    <ref_desc>
+      <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.resetcontents.method.htm">Resets the content</link> of the <apiname>TextControl</apiname> when clicking the <apiname>New</apiname> button. The file also contains code to invoke a message box that informs the user to decide whether resetting the content should be canceled or the changed document should (or should not) be saved before creating a new document, if  unsaved changes were made.</ref_desc>
+    <cs_code>
+      <code_line>private void New_Click(object sender, EventArgs e) {</code_line>
+      <code_line>        // Check whether the document is dirty. In this case, the user is suggested to save that document. </code_line>
+      <code_line>        if (SaveDirtyDocumentOnNew()) {</code_line>
+      <code_line>                // Create a new document.</code_line>
+      <code_line>                m_txTextControl.ResetContents();</code_line>
+      <code_line />
+      <code_line>                // A new document is created. Now:</code_line>
+      <code_line>                UpdateCurrentDocumentInfo(); // Reset the current document information.</code_line>
+      <code_line>                UpdateMainWindowCaption(); // Update the caption of the application's main window.</code_line>
+      <code_line>                UpdateSaveEnabledState(); // Update the enabled state of the Save button.</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+      <code_line />
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_Open.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Provides a method to <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.load.method.htm">load</link> a document into <apiname>TextControl</apiname>. It is used by the <apiname>Open</apiname> button and when clicking a recent file item. Similar to the <apiname>New</apiname> and <apiname>Exit</apiname> button, before loading the document, a method checks for unsaved changes in the current content to invoke a corresponding message box if necessary.</ref_desc>
+    <ref_desc>When loading it, information about the document is stored by using the corresponding <apiname>UpdateCurrentDocumentInfo</apiname> method. Some of these <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.loadsettings.class.htm">settings</link> (<apiname>CssSaveMode</apiname>, <apiname>CssFileName</apiname> and <apiname>UserPassword</apiname>) are used again when saving the loaded document by using the <apiname>Save</apiname> button.</ref_desc>
+    <ref_desc>Furthermore, in case the document is password protected, a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.filterexception.class.htm">FilterException</link> is thrown. This <apiname>Exception</apiname> is handled by the </ref_desc>
+    <ref_desc>
+      <apiname>HandlePasswordProtectedDocument</apiname> method that invokes a dialog to set the password for the document.</ref_desc>
+    <cs_code>
+      <code_line>internal void Open(string fileName = null, StreamType streamType = (StreamType)(-1)) {</code_line>
+      <code_line>        // Check whether the document is dirty. In this case, the user is suggested to save that document. </code_line>
+      <code_line>        if (SaveDirtyDocumentOnOpen()) {</code_line>
+      <code_line>                // Create settings to determine some load parameters and get information about the document</code_line>
+      <code_line>                // when it is opened.</code_line>
+      <code_line>                LoadSettings lsLoadSettings = CreateLoadSettings();</code_line>
+      <code_line>                try {</code_line>
+      <code_line>                        // Check whether a file to load is specified.</code_line>
+      <code_line>                        if (string.IsNullOrEmpty(fileName)) {</code_line>
+      <code_line>                                // If not, the TextControl Load dialog is opened. In that dialog all loadable file </code_line>
+      <code_line>                                // formats can be chosen that are provided by the TXTextControl.StreamType enumeration.</code_line>
+      <code_line>                                if (m_txTextControl.Load(StreamType.All, lsLoadSettings) == DialogResult.Cancel) {</code_line>
+      <code_line>                                        return;</code_line>
+      <code_line>                                }</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                        else {</code_line>
+      <code_line>                                // Determine the stream type if necessary</code_line>
+      <code_line>                                if (streamType == (StreamType)(-1)) {</code_line>
+      <code_line>                                        streamType = GetStreamType(fileName);</code_line>
+      <code_line>                                }</code_line>
+      <code_line>                                // Open the file directly by using its path.</code_line>
+      <code_line>                                m_txTextControl.Load(fileName, streamType, lsLoadSettings);</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                } catch (Exception ex) {</code_line>
+      <code_line>                        // Set the password if the document is password protected.</code_line>
+      <code_line>                        if (!HandlePasswordProtectedDocument(ex, lsLoadSettings)) {</code_line>
+      <code_line>                                return;</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                }</code_line>
+      <code_line>                // The document is loaded. Now:</code_line>
+      <code_line>                UpdateCurrentDocumentInfo(lsLoadSettings);  // Set information about the loaded document.              </code_line>
+      <code_line>                AddRecentFile(m_strActiveDocumentPath);  // Add the document to the recent files list.</code_line>
+      <code_line>                UpdateMainWindowCaption(); // Update the caption of the application's main window.</code_line>
+      <code_line>                UpdateSaveEnabledState(); // Update the enabled state of the Save button.</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>private bool HandlePasswordProtectedDocument(Exception exception, LoadSettings loadSettings) {</code_line>
+      <code_line>        // Check whether the thrown exception is an exception of type FilterException.</code_line>
+      <code_line>        if (exception is FilterException) {</code_line>
+      <code_line>                switch ((exception as FilterException).Reason) {</code_line>
+      <code_line>                        case FilterException.FilterError.InvalidPassword:</code_line>
+      <code_line>                                // Open the password dialog if the document is write protected.</code_line>
+      <code_line>                                PasswordDialog dlgPassword = new PasswordDialog(m_txTextControl, loadSettings);</code_line>
+      <code_line>                                return dlgPassword.ShowDialog(this) == DialogResult.OK;</code_line>
+      <code_line>                }</code_line>
+      <code_line>        }</code_line>
+      <code_line>        throw exception;</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>private void UpdateCurrentDocumentInfo(LoadSettings loadSettings) {</code_line>
+      <code_line>        m_strActiveDocumentPath = loadSettings.LoadedFile;</code_line>
+      <code_line>        m_stActiveDocumentType = m_stLastLoadedType = loadSettings.LoadedStreamType;</code_line>
+      <code_line>        m_strUserPasswordPDF = loadSettings.UserPassword;</code_line>
+      <code_line>        m_strCssFileName = loadSettings.CssFileName;</code_line>
+      <code_line>        m_svCssSaveMode = CssSaveMode.None;</code_line>
+      <code_line>        m_bIsDirtyDocument = false;</code_line>
+      <code_line>        m_bIsUnknownDocument = false;</code_line>
+      <code_line>        m_strActiveDocumentName = Path.GetFileName(m_strActiveDocumentPath);</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_Save.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Contains the method to <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.save.method.htm">save</link> a document. It is used by both the <apiname>Save</apiname> and <apiname>Save As</apiname>... buttons and the unsaved changes checking routines of the <apiname>New</apiname>, <apiname>Open</apiname> and <apiname>Exit</apiname> buttons.</ref_desc>
+    <ref_desc>When saving it, information about the document is stored by using the corresponding <apiname>UpdateCurrentDocumentInfo</apiname> method. Some of these <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.savesettings.class.htm">settings</link> (<apiname>CssSaveMode</apiname>, <apiname>CssFileName</apiname> and <apiname>UserPassword</apiname>) are used when saving the saved document again by using the <apiname>Save</apiname> button.</ref_desc>
+    <cs_code>
+      <code_line>private bool Save(string savePath) {</code_line>
+      <code_line>        // Create settings to determine some save parameters and get information about the document</code_line>
+      <code_line>        // when it is saved.</code_line>
+      <code_line>        SaveSettings svsSaveSettings = CreateSaveSettings();</code_line>
+      <code_line />
+      <code_line>        // Check whether a file path is specified where the document should be loaded.</code_line>
+      <code_line>        if (string.IsNullOrEmpty(savePath)) {</code_line>
+      <code_line>                // If no such path is determined, the TextControl Save dialog is opened. In that dialog </code_line>
+      <code_line>                // all file formats can be chosen that are provided by the TXTextControl.StreamType enumeration.</code_line>
+      <code_line>                // Furthermore the DialogSettings EnterPassword, StylesheetOptions and SaveSelection are set.</code_line>
+      <code_line>                if (m_txTextControl.Save(StreamType.All, svsSaveSettings,</code_line>
+      <code_line>                        SaveSettings.DialogSettings.EnterPassword |</code_line>
+      <code_line>                        SaveSettings.DialogSettings.StylesheetOptions |</code_line>
+      <code_line>                        SaveSettings.DialogSettings.SaveSelection) == DialogResult.Cancel) {</code_line>
+      <code_line>                        return false;</code_line>
+      <code_line>                }</code_line>
+      <code_line>        }</code_line>
+      <code_line>        else {</code_line>
+      <code_line>                // Save the document at the same location (and with the same format) where it was loaded</code_line>
+      <code_line>                // before.</code_line>
+      <code_line>                svsSaveSettings.CssSaveMode = m_svCssSaveMode; // Set the stored css save mode.</code_line>
+      <code_line>                svsSaveSettings.CssFileName = m_strCssFileName;  // Set the stored css file name.</code_line>
+      <code_line>                svsSaveSettings.UserPassword = m_strUserPasswordPDF; // Set the stored user password.</code_line>
+      <code_line>                m_txTextControl.Save(m_strActiveDocumentPath, m_stActiveDocumentType, svsSaveSettings);</code_line>
+      <code_line>        }</code_line>
+      <code_line />
+      <code_line>        // The document is saved. Now:</code_line>
+      <code_line>        UpdateCurrentDocumentInfo(svsSaveSettings);  // Set information about the saved document.       </code_line>
+      <code_line>        AddRecentFile(m_strActiveDocumentPath); // Add the document to the recent files list.</code_line>
+      <code_line>        UpdateMainWindowCaption();  // Update the caption of the application's main window.</code_line>
+      <code_line>        UpdateSaveEnabledState(); // Update the enabled state of the Save button.</code_line>
+      <code_line>        return true;</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>private void UpdateCurrentDocumentInfo(SaveSettings saveSettings) {</code_line>
+      <code_line>        m_strActiveDocumentPath = saveSettings.SavedFile;</code_line>
+      <code_line>        m_stActiveDocumentType = m_stLastSavedType = saveSettings.SavedStreamType;</code_line>
+      <code_line>        m_strUserPasswordPDF = saveSettings.UserPassword;</code_line>
+      <code_line>        m_strCssFileName = saveSettings.CssFileName;</code_line>
+      <code_line>        m_svCssSaveMode = saveSettings.CssSaveMode;</code_line>
+      <code_line>        m_bIsDirtyDocument = false;</code_line>
+      <code_line>        m_bIsUnknownDocument = false;</code_line>
+      <code_line>        m_strActiveDocumentName = Path.GetFileName(m_strActiveDocumentPath);</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_Print.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Implements handlers to enforce quick <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.print.method.htm">printing</link>, opening the print dialog and showing a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.printpreview.method.htm">print preview</link>.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_DocumentSettings.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Shows or hides the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.sidebarcontentlayout.enumeration.htm">Document Settings</link> sidebar.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_About.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Toggles the <apiname>About</apiname> sidebar.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_Exit.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Handles the closing of the application when the <apiname>Exit</apiname> or the <apiname>Form</apiname>'s close button is clicked. Similar to the <apiname>New</apiname> and <apiname>Open</apiname> button, before closing the application, a method checks the document whether unsaved changes were made and invokes a corresponding message box if necessary.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_AppMenu_RecentFiles.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Updates the recent files list when starting the application and loading or saving a document. The file paths of these documents are stored in a string collection that is saved as <apiname>Settings</apiname> property when closing the application. On opening the program, that collection is loaded into the recent files overview.</ref_desc>
+    <cs_code>
+      <code_line>private void LoadRecentFiles() {</code_line>
+      <code_line>        this.RecentFiles = Properties.Settings.Default.RecentFiles;</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>private void SaveRecentFiles() {</code_line>
+      <code_line>        Properties.Settings.Default.RecentFiles = this.RecentFiles;</code_line>
+      <code_line>        Properties.Settings.Default.Save();</code_line>
+      <code_line>}</code_line>
+      <code_line />
+      <code_line>internal StringCollection RecentFiles {</code_line>
+      <code_line>        get { return m_colRecentFiles; }</code_line>
+      <code_line>        set</code_line>
+      <code_line>        {</code_line>
+      <code_line>                m_colRecentFiles = value ?? new StringCollection();</code_line>
+      <code_line>                // Remove empty entries.</code_line>
+      <code_line>                for (int i = m_colRecentFiles.Count - 1; i &gt;= 0; i--) {</code_line>
+      <code_line>                        if (string.IsNullOrEmpty(m_colRecentFiles[i])) {</code_line>
+      <code_line>                                m_colRecentFiles.RemoveAt(i);</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                }</code_line>
+      <code_line>                UpdateRecentFileList();</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>When loading or saving a document, the list is updated by inserting or moving the file to the top of the list.</ref_desc>
+    <cs_code>
+      <code_line>private void AddRecentFile(string filePath) {</code_line>
+      <code_line>        if (!string.IsNullOrEmpty(filePath)) {</code_line>
+      <code_line>                // Check whether the list already contains that file.</code_line>
+      <code_line>                if (m_colRecentFiles.Contains(filePath)) {</code_line>
+      <code_line>                        // In that case remove that file.</code_line>
+      <code_line>                        m_colRecentFiles.Remove(filePath);</code_line>
+      <code_line>                }</code_line>
+      <code_line>                else {</code_line>
+      <code_line>                        // Remove last entry if the current number of entries equals to the</code_line>
+      <code_line>                        // maximum number of recent files.</code_line>
+      <code_line>                        if (m_colRecentFiles.Count == m_iMaxRecentFiles) {</code_line>
+      <code_line>                                m_colRecentFiles.RemoveAt(m_iMaxRecentFiles - 1);</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                }</code_line>
+      <code_line>                // Insert the file path at the top of the list.</code_line>
+      <code_line>                m_colRecentFiles.Insert(0, filePath);</code_line>
+      <code_line />
+      <code_line>                // Update the recent file items inside the ribbon's ApplicationMenuHelpPaneItems collection.</code_line>
+      <code_line>                UpdateRecentFileList();</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_QAT.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Inserts references to buttons of the application menu into the quick access toolbar. Furthermore, an undo and a redo button is created and added with the corresponding behavior.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_Sidebars.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Updates the layout of a sidebar when its content layout changed. By handling the <apiname>PropertyChanged</apiname> event of the <apiname>System.ComponentModel.INotifyPropertyChanged</apiname> interface, sidebar layout settings such as showing the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.showtitle.property.htm">title</link> and pin button or determining the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.windows.forms.sidebar.dialogstyle.property.htm">dialog style</link> are set considering the current set content layout.</ref_desc>
+    <cs_code>
+      <code_line>private void SidebarLeft_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {</code_line>
+      <code_line>        switch (e.PropertyName) {</code_line>
+      <code_line>                case "ContentLayout":</code_line>
+      <code_line>                        switch (m_sbSidebarLeft.ContentLayout) {</code_line>
+      <code_line>                                case Sidebar.SidebarContentLayout.TrackedChanges:</code_line>
+      <code_line>                                        m_sbSidebarLeft.ShowPinButton = true;</code_line>
+      <code_line>                                        m_rtbtnDocumentSettings.Checked = false;</code_line>
+      <code_line>                                        m_rtbtnAbout.Checked = false;</code_line>
+      <code_line>                                        break;</code_line>
+      <code_line>                                case Sidebar.SidebarContentLayout.DocumentSettings:</code_line>
+      <code_line>                                        m_sbSidebarLeft.ShowPinButton = false;</code_line>
+      <code_line>                                        m_sbSidebarLeft.IsPinned = true;</code_line>
+      <code_line>                                        m_rtbtnDocumentSettings.Checked = true;</code_line>
+      <code_line>                                        m_rtbtnAbout.Checked = false;</code_line>
+      <code_line>                                        break;</code_line>
+      <code_line>                                case Sidebar.SidebarContentLayout.About:</code_line>
+      <code_line>                                        m_sbSidebarLeft.ShowPinButton = false;</code_line>
+      <code_line>                                        m_sbSidebarLeft.IsPinned = true;</code_line>
+      <code_line>                                        m_rtbtnDocumentSettings.Checked = false;</code_line>
+      <code_line>                                        break;</code_line>
+      <code_line>                        }</code_line>
+      <code_line>                        break;</code_line>
+      <code_line>                case "IsShown":</code_line>
+      <code_line>                        m_rtbtnDocumentSettings.Checked = m_sbSidebarLeft.ContentLayout == Sidebar.SidebarContentLayout.DocumentSettings &amp;&amp; m_sbSidebarLeft.IsShown;</code_line>
+      <code_line>                        m_rtbtnAbout.Checked = m_sbSidebarLeft.ContentLayout == Sidebar.SidebarContentLayout.About &amp;&amp; m_sbSidebarLeft.IsShown;</code_line>
+      <code_line>                        break;</code_line>
+      <code_line>        }</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_Toolbars.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Determines the display colors of the toolbars and sets the texts of the status bar.</ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_ContextualTabs.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Shows and hides the contextual tabs. The <apiname>Table Tools</apiname> contextual tab with its Table Layout and <apiname>Formulas</apiname> tabs is shown when the <apiname>TextControl</apiname> input position is <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.inputpositionchanged.event.htm">changed</link> into a location inside a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.table.class.htm">table</link>.</ref_desc>
+    <cs_code>
+      <code_line>private void TextControl_InputPositionChanged(object sender, EventArgs e) {</code_line>
+      <code_line>        m_ctgTableTools.Visible = m_txTextControl.Tables.GetItem() != null;</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>The <apiname>Frame Tools</apiname> contextual tab is shown when a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.framebase.class.htm">frame</link> is <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.frameselected.event.htm">selected</link> and hidden when it is <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.framedeselected.event.htm">deselected</link>. If a <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.datavisualization.chartframe.class.htm">chart frame</link> is selected, both the <apiname>Frame Formatting</apiname> and the <apiname>Chart Layout</apiname> tabs are shown. If another frame base object is selected, only the <apiname>Frame Formatting</apiname> tab is shown.</ref_desc>
+    <cs_code>
+      <code_line>private void TextControl_FrameSelected(object sender, FrameEventArgs e) {</code_line>
+      <code_line>        // Check whether the selected frame is an object of type ChartFrame</code_line>
+      <code_line>        if (e.Frame is ChartFrame) {</code_line>
+      <code_line>                m_ctgFrameTools.Header = Properties.Resources.ContextualTabGroup_ChartTools; // Update group header</code_line>
+      <code_line>                if (!m_ctgFrameTools.ContextualTabs.Contains(m_rtRibbonChartLayoutTab)) {</code_line>
+      <code_line>                        // Because Frame Tools group does not contain the chart layout tab, it is added.</code_line>
+      <code_line>                        m_ctgFrameTools.ContextualTabs.Add(m_rtRibbonChartLayoutTab);</code_line>
+      <code_line>                }</code_line>
+      <code_line>        }</code_line>
+      <code_line>        // show the Frame Tools group</code_line>
+      <code_line>        m_ctgFrameTools.Visible = true;</code_line>
+      <code_line>}</code_line>
+    </cs_code>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow_DpiChanged.cs:</apiname>
+    </ref_desc>
+    <ref_desc>Updates the icons of the custom buttons (e.g. those of the application menu) when the resolution changed. </ref_desc>
+    <ref_desc />
+    <ref_desc>
+      <apiname>MainWindow.cs:</apiname>
+    </ref_desc>
+    <ref_desc>The <apiname>MainWindow</apiname> file connects inside the overridden <apiname>OnLoad</apiname> method the implemented behavior of the previous presented files with the application and sets the design of those elements that could not be determined by the designer.</ref_desc>
+    <ref_desc>Furthermore the <apiname>TextControl</apiname><link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.minitoolbar.class.htm">mini toolbar</link> is activated by setting the <link href="https://docs.textcontrol.com/textcontrol/windows-forms/ref.txtextcontrol.textcontrol.showminitoolbar.property.htm">ShowMiniToolbar</link> property to <apiname>MiniToolbarButton.LeftButton | MiniToolbarButton.RightButton</apiname>.</ref_desc>
+    <ref_desc />
+  </article>
+  <article>
+    <ref_hl>Support</ref_hl>
+    <ref_desc>The <apiname>Text Control Support</apiname> offers links to all technical resources related to <apiname>Text Control</apiname>, including documentation, getting started guides, FAQs and links to interesting blog articles.</ref_desc>
+    <ref_desc>Contact us under:</ref_desc>
+    <ref_desc>
+      <link href="https://www.textcontrol.com/support/overview/">https://www.textcontrol.com/support/overview/</link>
+    </ref_desc>
+    <ref_desc />
+    <ref_desc />
+    <ref_desc />
+  </article>
+</chap>

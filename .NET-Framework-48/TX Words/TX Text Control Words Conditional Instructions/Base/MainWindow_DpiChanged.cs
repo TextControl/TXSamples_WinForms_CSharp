@@ -1,0 +1,69 @@
+﻿/*-------------------------------------------------------------------------------------------------------------
+** MainWindow_DpiChanged.cs File
+**
+** Description:
+**     Handles custom image updating when the application resolution changed.
+**
+** copyright:		© Text Control GmbH
+**-----------------------------------------------------------------------------------------------------------*/
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using TXTextControl.Windows.Forms;
+using TXTextControl.Windows.Forms.Ribbon;
+
+namespace TXTextControl.Words {
+	partial class MainWindow {
+
+		/*-------------------------------------------------------------------------------------------------------------
+		** M E M B E R   V A R I A B L E S
+		**-----------------------------------------------------------------------------------------------------------*/
+
+		private readonly List<RibbonButton> m_lstCustomRibbonButtons = new List<RibbonButton>();
+		private float m_fDPI = 0;
+
+
+		/*-------------------------------------------------------------------------------------------------------------
+        ** O V E R R I D D E N   M E T H O D S
+        **-----------------------------------------------------------------------------------------------------------*/
+
+		/*-------------------------------------------------------------------------------------------------------------
+        ** WndProc Method (overridden)
+        ** Overridden to get the DPI value when the window is created and to update the icons of the custom 
+        ** ribbon buttons and groups when the dpi value changed.
+        **
+        ** Parameters:
+        **      message:   The Windows Message to process.
+        **-----------------------------------------------------------------------------------------------------------*/
+		protected override void WndProc(ref Message message) {
+			switch (message.Msg) {
+				case 0x0001: // WM_CREATE
+							 // Get the DPI value from the created handle.
+					using (Graphics g = Graphics.FromHwnd(this.Handle)) {
+						m_fDPI = g.DpiX;
+					}
+					break;
+				case 0x02E0: // WM_DPICHANGED
+							 // Get the new DPI value when the dpi value changed.
+					int iNewDPI = (int)message.WParam & 0xFFFF;
+					if (m_fDPI != (m_fDPI = iNewDPI)) {
+						// Step through those custom ribbon buttons that show an image that is provided
+						// by the TXTextControl.ResourceProvider
+						foreach (RibbonButton customButton in m_lstCustomRibbonButtons) {
+							customButton.SmallIcon = ResourceProvider.GetSmallIcon(customButton.Name, m_fDPI);
+							customButton.LargeIcon = ResourceProvider.GetLargeIcon(customButton.Name, m_fDPI);
+						}
+
+						// Update the small icons.
+						m_rtbtnPreviewConditionalInstructions.SmallIcon = GetSmallIcon("TXTextControl.Words.Images.PreviewFormFields_Small.svg");
+
+						// Update the large icons.
+						m_rtbtnPreviewConditionalInstructions.LargeIcon = GetLargeIcon("TXTextControl.Words.Images.PreviewFormFields_Large.svg");
+
+					}
+					break;
+			}
+			base.WndProc(ref message);
+		}
+	}
+}

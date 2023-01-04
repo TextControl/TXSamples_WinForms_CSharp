@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15F3BD0B-2967-461B-AADD-3C7754802CE3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TXTextControl.Words</RootNamespace>
+    <AssemblyName>TX Text Control Words</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>tx.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TXBarcode, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXBarcode.Windows.Forms, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing.Windows.Forms, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl, Version=31.0.2400.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=31.0.1600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Windows.Forms.Design, Version=31.0.115.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behavior\MainWindow_DragAndDrop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Behavior\MainWindow_OpenHyperlink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Behavior\MainWindow_Shortcuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supporting Classes and Dialogs\UserAccessDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supporting Classes and Dialogs\UserAccessDialog.Designer.cs" />
+    <Compile Include="Supporting Classes and Dialogs\UserInfo.cs" />
+    <Compile Include="Supporting Classes and Dialogs\PasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supporting Classes and Dialogs\PasswordDialog.Designer.cs" />
+    <Compile Include="Behavior\MainWindow_DpiChanged.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\1. File Menu Item\MainWindow_FileMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\2. Edit Menu Item\MainWindow_EditMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\2. Edit Menu Item\MainWindow_EditMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\2. Edit Menu Item\MainWindow_EditMenuItem_Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\1. File Menu Item\MainWindow_FileMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\1. File Menu Item\MainWindow_FileMenuItem_Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\5. Format Menu Item\MainWindow_FormatMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\5. Format Menu Item\MainWindow_FormatMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\5. Format Menu Item\MainWindow_FormatMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\5. Format Menu Item\MainWindow_FormatMenuItem_Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\4. Insert Menu Item\MainWindow_InsertMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\4. Insert Menu Item\MainWindow_InsertMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\4. Insert Menu Item\MainWindow_InsertMenuItem_Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\4. Insert Menu Item\MainWindow_InsertMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\2. Edit Menu Item\MainWindow_EditMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\1. File Menu Item\MainWindow_FileMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\6. Table Menu Item\MainWindow_TableMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\6. Table Menu Item\MainWindow_TableMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\6. Table Menu Item\MainWindow_TableMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\3. View Menu Item\MainWindow_ViewMenuItem_DropDownOpening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\3. View Menu Item\MainWindow_ViewMenuItem_Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\3. View Menu Item\MainWindow_ViewMenuItem_Click.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layout\MainWindow_Toolbars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Layout\3. View Menu Item\MainWindow_ViewMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Supporting Classes and Dialogs\UserAccessDialog.resx" />
+    <EmbeddedResource Include="Supporting Classes and Dialogs\PasswordDialog.resx" />
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\RightToLeft_Small.svg" />
+    <Content Include="tx.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
