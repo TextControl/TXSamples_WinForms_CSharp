@@ -256,6 +256,3 @@ paket-files/
 # Upgrade-Assistant
 **upgrade-assistant
 **upgrade-assistant.clef
-
-# .NET Core TX Words Reporting Sample is excluded until the ContextMenu bug is fixed
-.NET-Core-6/TX Words/TX Text Control Words Reporting/**
