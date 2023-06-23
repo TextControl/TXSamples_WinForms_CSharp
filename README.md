@@ -11,14 +11,11 @@ This repository is part of the [TX Text Control .NET Sample Collection](https://
 In order to use these samples, the following software is required:
 
 - The latest version of [TX Text Control .NET for Windows Forms](https://www.textcontrol.com/products/windows-forms/tx-text-control-dotnet/overview/)
-- [Visual Studio](https://visualstudio.microsoft.com/de/downloads/) (preferably the latest version)
+- [Visual Studio](https://visualstudio.microsoft.com/downloads/) (preferably the latest version)
 
 ## About the samples
 
 The directory contains three sample categories with a total of 18 sample applications for both [.NET Framework](./.NET-Framework-48) and [.NET Core](./.NET-Core-6).
-
-~*Note: The TX Text Control Words Reporting sample is not yet available for .NET Core, but will be in the future.*~  
-***TX Text Control 31.0.NET Service Pack 2 Update:*** The TX Text Control Words [.NET Core Reporting Sample](./.NET-Core-6/TX%20Words/TX%20Text%20Control%20Words%20Reporting) is now functional and added to this repository.
 
 Our samples are intended to be a resource for developers who are learning how to use TX Text Control .NET in their own applications, and provide a helpful starting point for building powerful and feature-rich document editing and processing functionality into a Windows Forms application. The Text Control [Windows Forms Guide](https://docs.textcontrol.com/textcontrol/windows-forms/article.winforms.htm) lists step-by-step tutorials on how to build these applications.
 
