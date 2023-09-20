@@ -49,16 +49,16 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TXBarcode, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXBarcode.Windows.Forms, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXDocumentServer, Version=31.0.1700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
-    <Reference Include="TXDocumentServer.Windows.Forms, Version=31.0.1400.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXDrawing, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXDrawing.Windows.Forms, Version=31.0.700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXImageProvider, Version=31.0.500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXTextControl, Version=31.0.2400.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXTextControl.Server, Version=31.0.1600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
-    <Reference Include="TXTextControl.Windows.Forms, Version=31.0.1600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXBarcode, Version=32.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXBarcode.Windows.Forms, Version=32.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXDocumentServer, Version=32.0.1800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDocumentServer.Windows.Forms, Version=32.0.1500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXDrawing, Version=32.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXDrawing.Windows.Forms, Version=32.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXImageProvider, Version=32.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXTextControl, Version=32.0.2500.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXTextControl.Server, Version=32.0.1700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=32.0.1700.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
